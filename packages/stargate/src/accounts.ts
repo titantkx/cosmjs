@@ -58,6 +58,11 @@ export function accountFromAny(input: Any): Account {
       assert(baseAccount);
       return accountFromBaseAccount(baseAccount);
     }
+    case "/ethermint.types.v1.EthAccount": {
+      const baseAccount = ModuleAccount.decode(value).baseAccount;
+      assert(baseAccount);
+      return accountFromBaseAccount(baseAccount);
+    }
 
     // vesting
 

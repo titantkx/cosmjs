@@ -17,12 +17,12 @@ import {
  * Takes a Secp256k1 public key as raw bytes and returns the Amino JSON
  * representation of it (the type/value wrapper object).
  */
-export function encodeSecp256k1Pubkey(pubkey: Uint8Array): Secp256k1Pubkey {
+export function encodeSecp256k1Pubkey(pubkey: Uint8Array, typeUrl?: string): Secp256k1Pubkey {
   if (pubkey.length !== 33 || (pubkey[0] !== 0x02 && pubkey[0] !== 0x03)) {
     throw new Error("Public key must be compressed secp256k1, i.e. 33 bytes starting with 0x02 or 0x03");
   }
   return {
-    type: pubkeyType.secp256k1,
+    type: typeUrl ? typeUrl : pubkeyType.secp256k1,
     value: toBase64(pubkey),
   };
 }

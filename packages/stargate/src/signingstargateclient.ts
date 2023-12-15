@@ -27,6 +27,14 @@ import { calculateFee, GasPrice } from "./fee";
 import {
   authzTypes,
   bankTypes,
+  createAuthzAminoConverters,
+  createBankAminoConverters,
+  createDistributionAminoConverters,
+  createFeegrantAminoConverters,
+  createGovAminoConverters,
+  createIbcAminoConverters,
+  createStakingAminoConverters,
+  createVestingAminoConverters,
   distributionTypes,
   feegrantTypes,
   govTypes,
@@ -39,16 +47,6 @@ import {
   MsgWithdrawDelegatorRewardEncodeObject,
   stakingTypes,
   vestingTypes,
-} from "./modules";
-import {
-  createAuthzAminoConverters,
-  createBankAminoConverters,
-  createDistributionAminoConverters,
-  createFeegrantAminoConverters,
-  createGovAminoConverters,
-  createIbcAminoConverters,
-  createStakingAminoConverters,
-  createVestingAminoConverters,
 } from "./modules";
 import { DeliverTxResponse, StargateClient, StargateClientOptions } from "./stargateclient";
 
@@ -87,6 +85,7 @@ export interface SigningStargateClientOptions extends StargateClientOptions {
   readonly broadcastTimeoutMs?: number;
   readonly broadcastPollIntervalMs?: number;
   readonly gasPrice?: GasPrice;
+  readonly isEthermint?: boolean;
 }
 
 export function createDefaultAminoConverters(): AminoConverters {
@@ -110,6 +109,7 @@ export class SigningStargateClient extends StargateClient {
   private readonly signer: OfflineSigner;
   private readonly aminoTypes: AminoTypes;
   private readonly gasPrice: GasPrice | undefined;
+  private readonly isEthermint: boolean;
 
   /**
    * Creates an instance by connecting to the given CometBFT RPC endpoint.
@@ -170,6 +170,7 @@ export class SigningStargateClient extends StargateClient {
     this.broadcastTimeoutMs = options.broadcastTimeoutMs;
     this.broadcastPollIntervalMs = options.broadcastPollIntervalMs;
     this.gasPrice = options.gasPrice;
+    this.isEthermint = options.isEthermint === true;
   }
 
   public async simulate(
@@ -184,7 +185,7 @@ export class SigningStargateClient extends StargateClient {
     if (!accountFromSigner) {
       throw new Error("Failed to retrieve account from signer");
     }
-    const pubkey = encodeSecp256k1Pubkey(accountFromSigner.pubkey);
+    const pubkey = encodeSecp256k1Pubkey(accountFromSigner.pubkey, this.isEthermint ? "/ethermint.crypto.v1.ethsecp256k1.PubKey" : undefined);
     const { sequence } = await this.getSequence(signerAddress);
     const { gasInfo } = await this.forceGetQueryClient().tx.simulate(anyMsgs, memo, pubkey, sequence);
     assertDefined(gasInfo);
@@ -445,7 +446,7 @@ export class SigningStargateClient extends StargateClient {
     if (!accountFromSigner) {
       throw new Error("Failed to retrieve account from signer");
     }
-    const pubkey = encodePubkey(encodeSecp256k1Pubkey(accountFromSigner.pubkey));
+    const pubkey = encodePubkey(encodeSecp256k1Pubkey(accountFromSigner.pubkey, this.isEthermint ? "/ethermint.crypto.v1.ethsecp256k1.PubKey" : undefined));
     const txBodyEncodeObject: TxBodyEncodeObject = {
       typeUrl: "/cosmos.tx.v1beta1.TxBody",
       value: {
@@ -464,7 +465,7 @@ export class SigningStargateClient extends StargateClient {
       fee.payer,
     );
     const signDoc = makeSignDoc(txBodyBytes, authInfoBytes, chainId, accountNumber);
-    const { signature, signed } = await this.signer.signDirect(signerAddress, signDoc);
+    const { signature, signed } = await this.signer.signDirect(signerAddress, signDoc, pubkey.typeUrl);
     return TxRaw.fromPartial({
       bodyBytes: signed.bodyBytes,
       authInfoBytes: signed.authInfoBytes,

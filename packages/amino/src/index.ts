@@ -19,6 +19,7 @@ export { makeCosmoshubPath } from "./paths";
 export {
   Ed25519Pubkey,
   isEd25519Pubkey,
+  isEthSecp256k1Pubkey,
   isMultisigThresholdPubkey,
   isSecp256k1Pubkey,
   isSinglePubkey,

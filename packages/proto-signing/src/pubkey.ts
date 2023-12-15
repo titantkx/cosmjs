@@ -3,6 +3,7 @@ import {
   encodeEd25519Pubkey,
   encodeSecp256k1Pubkey,
   isEd25519Pubkey,
+  isEthSecp256k1Pubkey,
   isMultisigThresholdPubkey,
   isSecp256k1Pubkey,
   MultisigThresholdPubkey,
@@ -23,7 +24,15 @@ import { Any } from "cosmjs-types/google/protobuf/any";
  * This is the reverse operation to `decodePubkey`.
  */
 export function encodePubkey(pubkey: Pubkey): Any {
-  if (isSecp256k1Pubkey(pubkey)) {
+  if (isEthSecp256k1Pubkey(pubkey)) {
+    const pubkeyProto = CosmosCryptoSecp256k1Pubkey.fromPartial({
+      key: fromBase64(pubkey.value),
+    });
+    return Any.fromPartial({
+      typeUrl: "/ethermint.crypto.v1.ethsecp256k1.PubKey",
+      value: Uint8Array.from(CosmosCryptoSecp256k1Pubkey.encode(pubkeyProto).finish()),
+    });
+  } else if (isSecp256k1Pubkey(pubkey)) {
     const pubkeyProto = CosmosCryptoSecp256k1Pubkey.fromPartial({
       key: fromBase64(pubkey.value),
     });
@@ -61,6 +70,7 @@ export function encodePubkey(pubkey: Pubkey): Any {
  */
 export function anyToSinglePubkey(pubkey: Any): SinglePubkey {
   switch (pubkey.typeUrl) {
+    case "/ethermint.crypto.v1.ethsecp256k1.PubKey":
     case "/cosmos.crypto.secp256k1.PubKey": {
       const { key } = CosmosCryptoSecp256k1Pubkey.decode(pubkey.value);
       return encodeSecp256k1Pubkey(key);
@@ -81,6 +91,7 @@ export function anyToSinglePubkey(pubkey: Any): SinglePubkey {
  */
 export function decodePubkey(pubkey: Any): Pubkey {
   switch (pubkey.typeUrl) {
+    case "/ethermint.crypto.v1.ethsecp256k1.PubKey":
     case "/cosmos.crypto.secp256k1.PubKey":
     case "/cosmos.crypto.ed25519.PubKey": {
       return anyToSinglePubkey(pubkey);
