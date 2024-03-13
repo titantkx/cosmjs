@@ -45,7 +45,9 @@ import {
   MsgTransferEncodeObject,
   MsgUndelegateEncodeObject,
   MsgWithdrawDelegatorRewardEncodeObject,
+  nftmintTypes,
   stakingTypes,
+  validatorrewardTypes,
   vestingTypes,
 } from "./modules";
 import { DeliverTxResponse, StargateClient, StargateClientOptions } from "./stargateclient";
@@ -61,6 +63,8 @@ export const defaultRegistryTypes: ReadonlyArray<[string, GeneratedType]> = [
   ...stakingTypes,
   ...ibcTypes,
   ...vestingTypes,
+  ...nftmintTypes,
+  ...validatorrewardTypes,
 ];
 
 export interface Fee {
@@ -194,7 +198,10 @@ export class SigningStargateClient extends StargateClient {
     if (!accountFromSigner) {
       throw new Error("Failed to retrieve account from signer");
     }
-    const pubkey = encodeSecp256k1Pubkey(accountFromSigner.pubkey, this.isEthermint ? "/ethermint.crypto.v1.ethsecp256k1.PubKey" : undefined);
+    const pubkey = encodeSecp256k1Pubkey(
+      accountFromSigner.pubkey,
+      this.isEthermint ? "/ethermint.crypto.v1.ethsecp256k1.PubKey" : undefined,
+    );
     const { sequence } = await this.getSequence(signerAddress);
     const { gasInfo } = await this.forceGetQueryClient().tx.simulate(anyMsgs, memo, pubkey, sequence);
     assertDefined(gasInfo);
@@ -463,7 +470,12 @@ export class SigningStargateClient extends StargateClient {
     if (!accountFromSigner) {
       throw new Error("Failed to retrieve account from signer");
     }
-    const pubkey = encodePubkey(encodeSecp256k1Pubkey(accountFromSigner.pubkey, this.isEthermint ? "/ethermint.crypto.v1.ethsecp256k1.PubKey" : undefined));
+    const pubkey = encodePubkey(
+      encodeSecp256k1Pubkey(
+        accountFromSigner.pubkey,
+        this.isEthermint ? "/ethermint.crypto.v1.ethsecp256k1.PubKey" : undefined,
+      ),
+    );
     const txBodyEncodeObject: TxBodyEncodeObject = {
       typeUrl: "/cosmos.tx.v1beta1.TxBody",
       value: {

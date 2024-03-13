@@ -358,7 +358,7 @@ __metadata:
     axios: ^1.6.0
     babylon: ^6.18.0
     chalk: ^4
-    cosmjs-types: ^0.9.0
+    cosmjs-types: "npm:titan-cosmjs-types@0.9.0"
     diff: ^4
     eslint: ^7.5
     eslint-config-prettier: ^8.3.0
@@ -404,7 +404,7 @@ __metadata:
     "@types/pako": ^1.0.1
     "@typescript-eslint/eslint-plugin": ^5.54.0
     "@typescript-eslint/parser": ^5.54.0
-    cosmjs-types: ^0.9.0
+    cosmjs-types: "npm:titan-cosmjs-types@0.9.0"
     eslint: ^7.5
     eslint-config-prettier: ^8.3.0
     eslint-import-resolver-node: ^0.3.4
@@ -761,7 +761,7 @@ __metadata:
     "@types/node": ^18
     "@typescript-eslint/eslint-plugin": ^5.54.0
     "@typescript-eslint/parser": ^5.54.0
-    cosmjs-types: ^0.9.0
+    cosmjs-types: "npm:titan-cosmjs-types@0.9.0"
     eslint: ^7.5
     eslint-config-prettier: ^8.3.0
     eslint-import-resolver-node: ^0.3.4
@@ -857,7 +857,7 @@ __metadata:
     "@types/node": ^18
     "@typescript-eslint/eslint-plugin": ^5.54.0
     "@typescript-eslint/parser": ^5.54.0
-    cosmjs-types: ^0.9.0
+    cosmjs-types: "npm:titan-cosmjs-types@0.9.0"
     eslint: ^7.5
     eslint-config-prettier: ^8.3.0
     eslint-import-resolver-node: ^0.3.4
@@ -3092,10 +3092,10 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"cosmjs-types@npm:^0.9.0":
+"cosmjs-types@npm:titan-cosmjs-types@0.9.0":
   version: 0.9.0
-  resolution: "cosmjs-types@npm:0.9.0"
-  checksum: 9b00d169eca334f27418bb80b39e0cff0196af40b0079e1f85536246059279207b853bdb6ec224ead0a02d15d4b7f6bf16bc096d41c436426aa5f8976ed2b430
+  resolution: "titan-cosmjs-types@npm:0.9.0"
+  checksum: 27a0032568af8ba0fe9e14be6df6a9ff9c19cfff21a3a35208f8a02bb174de19f8ddaf160a70a0160f2697450386828ca16307116a261fe186cb47a5a6fa4a26
   languageName: node
   linkType: hard
 
