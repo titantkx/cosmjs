@@ -168,6 +168,7 @@ export interface SigningCosmWasmClientOptions {
   readonly broadcastTimeoutMs?: number;
   readonly broadcastPollIntervalMs?: number;
   readonly gasPrice?: GasPrice;
+  readonly isEthermint?: boolean;
 }
 
 export class SigningCosmWasmClient extends CosmWasmClient {
@@ -178,6 +179,7 @@ export class SigningCosmWasmClient extends CosmWasmClient {
   private readonly signer: OfflineSigner;
   private readonly aminoTypes: AminoTypes;
   private readonly gasPrice: GasPrice | undefined;
+  private readonly isEthermint: boolean;
 
   /**
    * Creates an instance by connecting to the given CometBFT RPC endpoint.
@@ -241,6 +243,7 @@ export class SigningCosmWasmClient extends CosmWasmClient {
     this.broadcastTimeoutMs = options.broadcastTimeoutMs;
     this.broadcastPollIntervalMs = options.broadcastPollIntervalMs;
     this.gasPrice = options.gasPrice;
+    this.isEthermint = options.isEthermint === true;
   }
 
   public async simulate(
@@ -255,7 +258,10 @@ export class SigningCosmWasmClient extends CosmWasmClient {
     if (!accountFromSigner) {
       throw new Error("Failed to retrieve account from signer");
     }
-    const pubkey = encodeSecp256k1Pubkey(accountFromSigner.pubkey);
+    const pubkey = encodeSecp256k1Pubkey(
+      accountFromSigner.pubkey,
+      this.isEthermint ? "/ethermint.crypto.v1.ethsecp256k1.PubKey" : undefined,
+    );
     const { sequence } = await this.getSequence(signerAddress);
     const { gasInfo } = await this.forceGetQueryClient().tx.simulate(anyMsgs, memo, pubkey, sequence);
     assertDefined(gasInfo);
@@ -728,7 +734,12 @@ export class SigningCosmWasmClient extends CosmWasmClient {
     if (!accountFromSigner) {
       throw new Error("Failed to retrieve account from signer");
     }
-    const pubkey = encodePubkey(encodeSecp256k1Pubkey(accountFromSigner.pubkey));
+    const pubkey = encodePubkey(
+      encodeSecp256k1Pubkey(
+        accountFromSigner.pubkey,
+        this.isEthermint ? "/ethermint.crypto.v1.ethsecp256k1.PubKey" : undefined,
+      ),
+    );
     const txBody: TxBodyEncodeObject = {
       typeUrl: "/cosmos.tx.v1beta1.TxBody",
       value: {
@@ -747,7 +758,7 @@ export class SigningCosmWasmClient extends CosmWasmClient {
       fee.payer,
     );
     const signDoc = makeSignDoc(txBodyBytes, authInfoBytes, chainId, accountNumber);
-    const { signature, signed } = await this.signer.signDirect(signerAddress, signDoc);
+    const { signature, signed } = await this.signer.signDirect(signerAddress, signDoc, pubkey.typeUrl);
     return TxRaw.fromPartial({
       bodyBytes: signed.bodyBytes,
       authInfoBytes: signed.authInfoBytes,
