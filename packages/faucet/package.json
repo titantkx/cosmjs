@@ -20,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/tokenize-titan/cosmjs/tree/develop/packages/faucet"
+    "url": "https://github.com/titantkx/cosmjs/tree/develop/packages/faucet"
   },
   "publishConfig": {
     "access": "public",

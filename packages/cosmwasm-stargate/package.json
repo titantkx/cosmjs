@@ -17,7 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/tokenize-titan/cosmjs/tree/develop/packages/cosmwasm-stargate"
+    "url": "https://github.com/titantkx/cosmjs/tree/develop/packages/cosmwasm-stargate"
   },
   "publishConfig": {
     "access": "public",
@@ -47,7 +47,7 @@
     "@cosmjs/stargate": "workspace:^",
     "@cosmjs/tendermint-rpc": "workspace:^",
     "@cosmjs/utils": "workspace:^",
-    "cosmjs-types": "npm:titan-cosmjs-types@0.9.0",
+    "cosmjs-types": "npm:titan-cosmjs-types@0.10.0",
     "pako": "^2.0.2"
   },
   "devDependencies": {
