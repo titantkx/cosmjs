@@ -12,7 +12,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
     ],\
     "dependencyTreeRoots": [\
       {\
-        "name": "cosmjs-monorepo-root",\
+        "name": "titan-cosmjs-monorepo-root",\
         "reference": "workspace:."\
       },\
       {\
@@ -99,7 +99,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ["@cosmjs/stream", ["workspace:packages/stream"]],\
       ["@cosmjs/tendermint-rpc", ["workspace:packages/tendermint-rpc"]],\
       ["@cosmjs/utils", ["workspace:packages/utils"]],\
-      ["cosmjs-monorepo-root", ["workspace:."]]\
+      ["titan-cosmjs-monorepo-root", ["workspace:."]]\
     ],\
     "fallbackPool": [\
       [\
@@ -1066,7 +1066,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         "cosmjs-types",\
         [\
           "titan-cosmjs-types",\
-          "npm:0.9.0"\
+          "npm:0.10.0"\
         ]\
       ],\
       [\
@@ -3316,7 +3316,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["chalk", "npm:4.1.2"],\
             ["cosmjs-types", [\
               "titan-cosmjs-types",\
-              "npm:0.9.0"\
+              "npm:0.10.0"\
             ]],\
             ["diff", "npm:4.0.2"],\
             ["eslint", "npm:7.26.0"],\
@@ -3365,7 +3365,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:5.54.0"],\
             ["cosmjs-types", [\
               "titan-cosmjs-types",\
-              "npm:0.9.0"\
+              "npm:0.10.0"\
             ]],\
             ["eslint", "npm:7.26.0"],\
             ["eslint-config-prettier", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:8.3.0"],\
@@ -3739,7 +3739,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:5.54.0"],\
             ["cosmjs-types", [\
               "titan-cosmjs-types",\
-              "npm:0.9.0"\
+              "npm:0.10.0"\
             ]],\
             ["eslint", "npm:7.26.0"],\
             ["eslint-config-prettier", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:8.3.0"],\
@@ -3842,7 +3842,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/parser", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:5.54.0"],\
             ["cosmjs-types", [\
               "titan-cosmjs-types",\
-              "npm:0.9.0"\
+              "npm:0.10.0"\
             ]],\
             ["eslint", "npm:7.26.0"],\
             ["eslint-config-prettier", "virtual:4f1584ad4aba8733a24be7c8aebbffafef25607f2d00f4b314cf96717145c692763628a31c2b85d4686fbb091ff21ebffa3cc337399c042c19a32b9bdb786464#npm:8.3.0"],\
@@ -7182,24 +7182,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["vary", "npm:1.1.2"]\
           ],\
           "linkType": "HARD"\
-        }]\
-      ]],\
-      ["cosmjs-monorepo-root", [\
-        ["workspace:.", {\
-          "packageLocation": "./",\
-          "packageDependencies": [\
-            ["cosmjs-monorepo-root", "workspace:."],\
-            ["@cosmjs/amino", "workspace:packages/amino"],\
-            ["@cosmjs/cosmwasm-stargate", "workspace:packages/cosmwasm-stargate"],\
-            ["@cosmjs/crypto", "workspace:packages/crypto"],\
-            ["@cosmjs/encoding", "workspace:packages/encoding"],\
-            ["@cosmjs/proto-signing", "workspace:packages/proto-signing"],\
-            ["@cosmjs/stargate", "workspace:packages/stargate"],\
-            ["eslint", "npm:7.26.0"],\
-            ["prettier", "npm:2.8.8"],\
-            ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"]\
-          ],\
-          "linkType": "SOFT"\
         }]\
       ]],\
       ["cross-spawn", [\
@@ -12646,11 +12628,29 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["titan-cosmjs-types", [\
-        ["npm:0.9.0", {\
-          "packageLocation": "./.yarn/cache/titan-cosmjs-types-npm-0.9.0-68e9c4747f-27a0032568.zip/node_modules/titan-cosmjs-types/",\
+      ["titan-cosmjs-monorepo-root", [\
+        ["workspace:.", {\
+          "packageLocation": "./",\
           "packageDependencies": [\
-            ["titan-cosmjs-types", "npm:0.9.0"]\
+            ["titan-cosmjs-monorepo-root", "workspace:."],\
+            ["@cosmjs/amino", "workspace:packages/amino"],\
+            ["@cosmjs/cosmwasm-stargate", "workspace:packages/cosmwasm-stargate"],\
+            ["@cosmjs/crypto", "workspace:packages/crypto"],\
+            ["@cosmjs/encoding", "workspace:packages/encoding"],\
+            ["@cosmjs/proto-signing", "workspace:packages/proto-signing"],\
+            ["@cosmjs/stargate", "workspace:packages/stargate"],\
+            ["eslint", "npm:7.26.0"],\
+            ["prettier", "npm:2.8.8"],\
+            ["typescript", "patch:typescript@npm%3A4.9.5#~builtin<compat/typescript>::version=4.9.5&hash=289587"]\
+          ],\
+          "linkType": "SOFT"\
+        }]\
+      ]],\
+      ["titan-cosmjs-types", [\
+        ["npm:0.10.0", {\
+          "packageLocation": "./.yarn/cache/titan-cosmjs-types-npm-0.10.0-ab96070727-97c8a38a38.zip/node_modules/titan-cosmjs-types/",\
+          "packageDependencies": [\
+            ["titan-cosmjs-types", "npm:0.10.0"]\
           ],\
           "linkType": "HARD"\
         }]\

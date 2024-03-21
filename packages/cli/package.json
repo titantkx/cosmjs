@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/tokenize-titan/cosmjs/tree/develop/packages/cli"
+    "url": "https://github.com/titantkx/cosmjs/tree/develop/packages/cli"
   },
   "publishConfig": {
     "access": "public",
@@ -55,7 +55,7 @@
     "axios": "^1.6.0",
     "babylon": "^6.18.0",
     "chalk": "^4",
-    "cosmjs-types": "npm:titan-cosmjs-types@0.9.0",
+    "cosmjs-types": "npm:titan-cosmjs-types@0.10.0",
     "diff": "^4",
     "recast": "^0.20",
     "ts-node": "^8",
