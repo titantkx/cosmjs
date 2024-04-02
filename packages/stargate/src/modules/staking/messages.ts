@@ -16,6 +16,7 @@ export const stakingTypes: ReadonlyArray<[string, GeneratedType]> = [
   ["/cosmos.staking.v1beta1.MsgDelegate", MsgDelegate],
   ["/cosmos.staking.v1beta1.MsgDelegateForOther", MsgDelegateForOther],
   ["/cosmos.staking.v1beta1.MsgEditValidator", MsgEditValidator],
+  ["/cosmos.staking.v1beta1.MsgUndelegate", MsgUndelegate],
 ];
 
 export interface MsgBeginRedelegateEncodeObject extends EncodeObject {
