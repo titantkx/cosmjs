@@ -18,7 +18,7 @@ function jsonDecimalToProto(decimal: string): string {
 
 /** Sets interest rate. */
 export interface AminoMsgSetRate extends AminoMsg {
-  readonly type: "validatorreward/MsgSetRate";
+  readonly type: "validatorreward/SetRate";
   readonly value: {
     authority: string;
     rate: string;
@@ -26,12 +26,12 @@ export interface AminoMsgSetRate extends AminoMsg {
 }
 
 export function isAminoMsgSetRate(msg: AminoMsg): msg is AminoMsgSetRate {
-  return msg.type === "validatorreward/MsgSetRate";
+  return msg.type === "validatorreward/SetRate";
 }
 
 /** Sets reward pool's authority. */
 export interface AminoMsgSetAuthority extends AminoMsg {
-  readonly type: "validatorreward/MsgSetAuthority";
+  readonly type: "validatorreward/SetAuthority";
   readonly value: {
     authority: string;
     new_authority: string;
@@ -39,12 +39,12 @@ export interface AminoMsgSetAuthority extends AminoMsg {
 }
 
 export function isAminoMsgSetAuthority(msg: AminoMsg): msg is AminoMsgSetAuthority {
-  return msg.type === "validatorreward/MsgSetAuthority";
+  return msg.type === "validatorreward/SetAuthority";
 }
 
 /** Funds reward pool. */
 export interface AminoMsgFundRewardPool extends AminoMsg {
-  readonly type: "validatorreward/MsgFundRewardPool";
+  readonly type: "validatorreward/FundRewardPool";
   readonly value: {
     depositor: string;
     amount: Coin[];
@@ -52,13 +52,13 @@ export interface AminoMsgFundRewardPool extends AminoMsg {
 }
 
 export function isAminoMsgFundRewardPool(msg: AminoMsg): msg is AminoMsgFundRewardPool {
-  return msg.type === "validatorreward/MsgFundRewardPool";
+  return msg.type === "validatorreward/FundRewardPool";
 }
 
 export function createValidatorRewardAminoConverters(): Record<string, AminoConverter> {
   return {
     "/titan.validatorreward.MsgSetRate": {
-      aminoType: "validatorreward/MsgSetRate",
+      aminoType: "validatorreward/SetRate",
       toAmino: ({ authority, rate }: MsgSetRate): AminoMsgSetRate["value"] => {
         return {
           authority: authority,
@@ -71,7 +71,7 @@ export function createValidatorRewardAminoConverters(): Record<string, AminoConv
       }),
     },
     "/titan.validatorreward.MsgSetAuthority": {
-      aminoType: "validatorreward/MsgSetAuthority",
+      aminoType: "validatorreward/SetAuthority",
       toAmino: ({ authority, newAuthority }: MsgSetAuthority): AminoMsgSetAuthority["value"] => {
         return {
           authority: authority,
@@ -84,7 +84,7 @@ export function createValidatorRewardAminoConverters(): Record<string, AminoConv
       }),
     },
     "/titan.validatorreward.MsgFundRewardPool": {
-      aminoType: "validatorreward/MsgFundRewardPool",
+      aminoType: "validatorreward/FundRewardPool",
       toAmino: ({ depositor, amount }: MsgFundRewardPool): AminoMsgFundRewardPool["value"] => {
         return {
           depositor: depositor,

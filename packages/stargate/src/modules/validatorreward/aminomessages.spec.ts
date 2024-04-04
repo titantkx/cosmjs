@@ -23,7 +23,7 @@ describe("AminoTypes", () => {
         value: msg,
       });
       const expected: AminoMsgSetRate = {
-        type: "validatorreward/MsgSetRate",
+        type: "validatorreward/SetRate",
         value: {
           authority: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           rate: "0.100000000000000000", // 0.1
@@ -43,7 +43,7 @@ describe("AminoTypes", () => {
         value: msg,
       });
       const expected: AminoMsgSetAuthority = {
-        type: "validatorreward/MsgSetAuthority",
+        type: "validatorreward/SetAuthority",
         value: {
           authority: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           new_authority: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
@@ -63,7 +63,7 @@ describe("AminoTypes", () => {
         value: msg,
       });
       const expected: AminoMsgFundRewardPool = {
-        type: "validatorreward/MsgFundRewardPool",
+        type: "validatorreward/FundRewardPool",
         value: {
           depositor: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           amount: [coin(1234, "ucosm")],
@@ -76,7 +76,7 @@ describe("AminoTypes", () => {
   describe("fromAmino", () => {
     it("works for MsgSetRate", () => {
       const aminoMsg: AminoMsgSetRate = {
-        type: "validatorreward/MsgSetRate",
+        type: "validatorreward/SetRate",
         value: {
           authority: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           rate: "0.100000000000000000", // 0.1
@@ -95,7 +95,7 @@ describe("AminoTypes", () => {
 
     it("works for MsgSetAuthority", () => {
       const aminoMsg: AminoMsgSetAuthority = {
-        type: "validatorreward/MsgSetAuthority",
+        type: "validatorreward/SetAuthority",
         value: {
           authority: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           new_authority: "cosmos10dyr9899g6t0pelew4nvf4j5c3jcgv0r73qga5",
@@ -114,7 +114,7 @@ describe("AminoTypes", () => {
 
     it("works for MsgFundRewardPool", () => {
       const aminoMsg: AminoMsgFundRewardPool = {
-        type: "validatorreward/MsgFundRewardPool",
+        type: "validatorreward/FundRewardPool",
         value: {
           depositor: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           amount: [coin(1234, "ucosm")],

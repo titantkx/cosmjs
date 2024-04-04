@@ -6,7 +6,7 @@ import { AminoConverter } from "../..";
 
 /** Creates a new class. */
 export interface AminoMsgCreateClass extends AminoMsg {
-  readonly type: "nftmint/MsgCreateClass";
+  readonly type: "nftmint/CreateClass";
   readonly value: {
     readonly creator: string;
     readonly name: string;
@@ -19,12 +19,12 @@ export interface AminoMsgCreateClass extends AminoMsg {
 }
 
 export function isAminoMsgCreateClass(msg: AminoMsg): msg is AminoMsgCreateClass {
-  return msg.type === "nftmint/MsgCreateClass";
+  return msg.type === "nftmint/CreateClass";
 }
 
 /** Updates a class. */
 export interface AminoMsgUpdateClass extends AminoMsg {
-  readonly type: "nftmint/MsgUpdateClass";
+  readonly type: "nftmint/UpdateClass";
   readonly value: {
     readonly creator: string;
     readonly id: string;
@@ -38,12 +38,12 @@ export interface AminoMsgUpdateClass extends AminoMsg {
 }
 
 export function isAminoMsgUpdateClass(msg: AminoMsg): msg is AminoMsgUpdateClass {
-  return msg.type === "nftmint/MsgUpdateClass";
+  return msg.type === "nftmint/UpdateClass";
 }
 
 /** Transfers a class. */
 export interface AminoMsgTransferClass extends AminoMsg {
-  readonly type: "nftmint/MsgTransferClass";
+  readonly type: "nftmint/TransferClass";
   readonly value: {
     readonly creator: string;
     readonly class_id: string;
@@ -52,12 +52,12 @@ export interface AminoMsgTransferClass extends AminoMsg {
 }
 
 export function isAminoMsgTransferClass(msg: AminoMsg): msg is AminoMsgTransferClass {
-  return msg.type === "nftmint/MsgTransferClass";
+  return msg.type === "nftmint/TransferClass";
 }
 
 /** Mints a new NFT. */
 export interface AminoMsgMint extends AminoMsg {
-  readonly type: "nftmint/MsgMint";
+  readonly type: "nftmint/Mint";
   readonly value: {
     readonly creator: string;
     readonly receiver: string;
@@ -69,13 +69,13 @@ export interface AminoMsgMint extends AminoMsg {
 }
 
 export function isAminoMsgMint(msg: AminoMsg): msg is AminoMsgMint {
-  return msg.type === "nftmint/MsgMint";
+  return msg.type === "nftmint/Mint";
 }
 
 export function createNftmintAminoConverters(): Record<string, AminoConverter> {
   return {
     "/titan.nftmint.MsgCreateClass": {
-      aminoType: "nftmint/MsgCreateClass",
+      aminoType: "nftmint/CreateClass",
       toAmino: ({
         creator,
         name,
@@ -114,7 +114,7 @@ export function createNftmintAminoConverters(): Record<string, AminoConverter> {
       }),
     },
     "/titan.nftmint.MsgUpdateClass": {
-      aminoType: "nftmint/MsgUpdateClass",
+      aminoType: "nftmint/UpdateClass",
       toAmino: ({
         creator,
         id,
@@ -157,7 +157,7 @@ export function createNftmintAminoConverters(): Record<string, AminoConverter> {
       }),
     },
     "/titan.nftmint.MsgTransferClass": {
-      aminoType: "nftmint/MsgTransferClass",
+      aminoType: "nftmint/TransferClass",
       toAmino: ({ creator, classId, receiver }: MsgTransferClass): AminoMsgTransferClass["value"] => {
         return {
           creator: creator,
@@ -172,7 +172,7 @@ export function createNftmintAminoConverters(): Record<string, AminoConverter> {
       }),
     },
     "/titan.nftmint.MsgMint": {
-      aminoType: "nftmint/MsgMint",
+      aminoType: "nftmint/Mint",
       toAmino: ({ creator, receiver, classId, uri, uriHash, data }: MsgMint): AminoMsgMint["value"] => {
         return {
           creator: creator,

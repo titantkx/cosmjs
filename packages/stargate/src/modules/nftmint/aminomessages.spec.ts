@@ -28,7 +28,7 @@ describe("AminoTypes", () => {
         value: msg,
       });
       const expected: AminoMsgCreateClass = {
-        type: "nftmint/MsgCreateClass",
+        type: "nftmint/CreateClass",
         value: {
           creator: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           name: "Name",
@@ -59,7 +59,7 @@ describe("AminoTypes", () => {
         value: msg,
       });
       const expected: AminoMsgUpdateClass = {
-        type: "nftmint/MsgUpdateClass",
+        type: "nftmint/UpdateClass",
         value: {
           creator: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           id: "1",
@@ -86,7 +86,7 @@ describe("AminoTypes", () => {
         value: msg,
       });
       const expected: AminoMsgTransferClass = {
-        type: "nftmint/MsgTransferClass",
+        type: "nftmint/TransferClass",
         value: {
           creator: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           class_id: "1",
@@ -111,7 +111,7 @@ describe("AminoTypes", () => {
         value: msg,
       });
       const expected: AminoMsgMint = {
-        type: "nftmint/MsgMint",
+        type: "nftmint/Mint",
         value: {
           creator: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           receiver: "cosmos1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
@@ -128,7 +128,7 @@ describe("AminoTypes", () => {
   describe("fromAmino", () => {
     it("works for MsgCreateClass", () => {
       const aminoMsg: AminoMsgCreateClass = {
-        type: "nftmint/MsgCreateClass",
+        type: "nftmint/CreateClass",
         value: {
           creator: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           name: "Name",
@@ -157,7 +157,7 @@ describe("AminoTypes", () => {
 
     it("works for MsgUpdateClass", () => {
       const aminoMsg: AminoMsgUpdateClass = {
-        type: "nftmint/MsgUpdateClass",
+        type: "nftmint/UpdateClass",
         value: {
           creator: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           id: "1",
@@ -188,7 +188,7 @@ describe("AminoTypes", () => {
 
     it("works for MsgTransferClass", () => {
       const aminoMsg: AminoMsgTransferClass = {
-        type: "nftmint/MsgTransferClass",
+        type: "nftmint/TransferClass",
         value: {
           creator: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           class_id: "1",
@@ -209,7 +209,7 @@ describe("AminoTypes", () => {
 
     it("works for MsgMint", () => {
       const aminoMsg: AminoMsgMint = {
-        type: "nftmint/MsgMint",
+        type: "nftmint/Mint",
         value: {
           creator: "cosmos1dye4wn0p2w0hfpg90mqjdwqvxufz8vfdww8mmv",
           receiver: "cosmos1pkptre7fdkl6gfrzlesjjvhxhlc3r4gmmk8rs6",
