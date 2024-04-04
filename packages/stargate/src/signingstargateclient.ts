@@ -33,7 +33,9 @@ import {
   createFeegrantAminoConverters,
   createGovAminoConverters,
   createIbcAminoConverters,
+  createNftmintAminoConverters,
   createStakingAminoConverters,
+  createValidatorRewardAminoConverters,
   createVestingAminoConverters,
   distributionTypes,
   feegrantTypes,
@@ -111,6 +113,8 @@ export function createDefaultAminoConverters(): AminoConverters {
     ...createIbcAminoConverters(),
     ...createFeegrantAminoConverters(),
     ...createVestingAminoConverters(),
+    ...createNftmintAminoConverters(),
+    ...createValidatorRewardAminoConverters(),
   };
 }
 
