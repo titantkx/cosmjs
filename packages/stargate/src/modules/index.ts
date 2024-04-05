@@ -9,7 +9,7 @@ export {
   isAminoMsgMultiSend,
   isAminoMsgSend,
 } from "./bank/aminomessages";
-export { MsgSendEncodeObject, bankTypes, isMsgSendEncodeObject } from "./bank/messages";
+export { bankTypes, isMsgSendEncodeObject, MsgSendEncodeObject } from "./bank/messages";
 export { BankExtension, setupBankExtension } from "./bank/queries";
 export {
   AminoMsgVerifyInvariant,
@@ -28,9 +28,9 @@ export {
   isAminoMsgWithdrawValidatorCommission,
 } from "./distribution/aminomessages";
 export {
-  MsgWithdrawDelegatorRewardEncodeObject,
   distributionTypes,
   isMsgWithdrawDelegatorRewardEncodeObject,
+  MsgWithdrawDelegatorRewardEncodeObject,
 } from "./distribution/messages";
 export { DistributionExtension, setupDistributionExtension } from "./distribution/queries";
 export {
@@ -53,21 +53,21 @@ export {
   isAminoMsgVoteWeighted,
 } from "./gov/aminomessages";
 export {
-  MsgDepositEncodeObject,
-  MsgSubmitProposalEncodeObject,
-  MsgVoteEncodeObject,
-  MsgVoteWeightedEncodeObject,
   govTypes,
   isMsgDepositEncodeObject,
   isMsgSubmitProposalEncodeObject,
   isMsgVoteEncodeObject,
   isMsgVoteWeightedEncodeObject,
+  MsgDepositEncodeObject,
+  MsgSubmitProposalEncodeObject,
+  MsgVoteEncodeObject,
+  MsgVoteWeightedEncodeObject,
 } from "./gov/messages";
 export { GovExtension, GovParamsType, GovProposalId, setupGovExtension } from "./gov/queries";
 export { createGroupAminoConverters } from "./group/aminomessages";
 export { groupTypes } from "./group/messages";
 export { AminoMsgTransfer, createIbcAminoConverters, isAminoMsgTransfer } from "./ibc/aminomessages";
-export { MsgTransferEncodeObject, ibcTypes, isMsgTransferEncodeObject } from "./ibc/messages";
+export { ibcTypes, isMsgTransferEncodeObject, MsgTransferEncodeObject } from "./ibc/messages";
 export { IbcExtension, setupIbcExtension } from "./ibc/queries";
 export { MintExtension, MintParams, setupMintExtension } from "./mint/queries";
 export {
@@ -82,18 +82,19 @@ export {
   isAminoMsgUpdateClass,
 } from "./nftmint/aminomessages";
 export {
-  MsgCreateClassEncodeObject,
-  MsgMintEncodeObject,
-  MsgTransferClassEncodeObject,
-  MsgUpdateClassEncodeObject,
   isMsgCreateClassEncodeObject,
   isMsgMintEncodeObject,
   isMsgTransferClassEncodeObject,
   isMsgUpdateClassEncodeObject,
+  MsgCreateClassEncodeObject,
+  MsgMintEncodeObject,
+  MsgTransferClassEncodeObject,
+  MsgUpdateClassEncodeObject,
   nftmintTypes,
 } from "./nftmint/messages";
 export { AminoMsgUnjail, createSlashingAminoConverters, isAminoMsgUnjail } from "./slashing/aminomessages";
-export { SlashingExtension, setupSlashingExtension } from "./slashing/queries";
+export { isMsgUnjailEncodeObject, MsgUnjailEncodeObject, slashingTypes } from "./slashing/messages";
+export { setupSlashingExtension, SlashingExtension } from "./slashing/queries";
 export {
   AminoMsgBeginRedelegate,
   AminoMsgCreateValidator,
@@ -112,13 +113,6 @@ export {
   isAminoMsgUndelegate,
 } from "./staking/aminomessages";
 export {
-  MsgBeginRedelegateEncodeObject,
-  MsgCreateValidatorEncodeObject,
-  MsgCreateValidatorForOtherEncodeObject,
-  MsgDelegateEncodeObject,
-  MsgDelegateForOtherEncodeObject,
-  MsgEditValidatorEncodeObject,
-  MsgUndelegateEncodeObject,
   isMsgBeginRedelegateEncodeObject,
   isMsgCreateValidatorEncodeObject,
   isMsgCreateValidatorForOtherEncodeObject,
@@ -126,10 +120,17 @@ export {
   isMsgDelegateForOtherEncodeObject,
   isMsgEditValidatorEncodeObject,
   isMsgUndelegateEncodeObject,
+  MsgBeginRedelegateEncodeObject,
+  MsgCreateValidatorEncodeObject,
+  MsgCreateValidatorForOtherEncodeObject,
+  MsgDelegateEncodeObject,
+  MsgDelegateForOtherEncodeObject,
+  MsgEditValidatorEncodeObject,
+  MsgUndelegateEncodeObject,
   stakingTypes,
 } from "./staking/messages";
-export { StakingExtension, setupStakingExtension } from "./staking/queries";
-export { TxExtension, setupTxExtension } from "./tx/queries";
+export { setupStakingExtension, StakingExtension } from "./staking/queries";
+export { setupTxExtension, TxExtension } from "./tx/queries";
 export {
   AminoMsgFundRewardPool,
   AminoMsgSetAuthority,
@@ -140,12 +141,12 @@ export {
   isAminoMsgSetRate,
 } from "./validatorreward/aminomessages";
 export {
-  MsgFundRewardPoolEncodeObject,
-  MsgSetAuthorityEncodeObject,
-  MsgSetRateEncodeObject,
   isMsgFundRewardPoolEncodeObject,
   isMsgSetAuthorityEncodeObject,
   isMsgSetRateEncodeObject,
+  MsgFundRewardPoolEncodeObject,
+  MsgSetAuthorityEncodeObject,
+  MsgSetRateEncodeObject,
   validatorrewardTypes,
 } from "./validatorreward/messages";
 export {

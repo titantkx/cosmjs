@@ -34,6 +34,7 @@ import {
   createGovAminoConverters,
   createIbcAminoConverters,
   createNftmintAminoConverters,
+  createSlashingAminoConverters,
   createStakingAminoConverters,
   createValidatorRewardAminoConverters,
   createVestingAminoConverters,
@@ -52,6 +53,7 @@ import {
   validatorrewardTypes,
   vestingTypes,
 } from "./modules";
+import { slashingTypes } from "./modules/slashing/messages";
 import { DeliverTxResponse, StargateClient, StargateClientOptions } from "./stargateclient";
 
 export const defaultRegistryTypes: ReadonlyArray<[string, GeneratedType]> = [
@@ -67,6 +69,7 @@ export const defaultRegistryTypes: ReadonlyArray<[string, GeneratedType]> = [
   ...vestingTypes,
   ...nftmintTypes,
   ...validatorrewardTypes,
+  ...slashingTypes,
 ];
 
 export interface Fee {
@@ -115,6 +118,7 @@ export function createDefaultAminoConverters(): AminoConverters {
     ...createVestingAminoConverters(),
     ...createNftmintAminoConverters(),
     ...createValidatorRewardAminoConverters(),
+    ...createSlashingAminoConverters(),
   };
 }
 
