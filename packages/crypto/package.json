@@ -1,6 +1,6 @@
 {
   "name": "@cosmjs/crypto",
-  "version": "0.32.13",
+  "version": "0.32.14",
   "description": "Cryptography resources for blockchain projects",
   "contributors": [
     "IOV SAS <admin@iov.one>",
@@ -47,7 +47,7 @@
     "@cosmjs/utils": "workspace:^",
     "@noble/hashes": "^1",
     "bn.js": "^5.2.0",
-    "elliptic": "^6.5.4",
+    "elliptic": "^6.6.1",
     "libsodium-wrappers-sumo": "^0.7.11"
   },
   "devDependencies": {
